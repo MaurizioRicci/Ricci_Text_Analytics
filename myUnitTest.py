@@ -13,7 +13,7 @@ class MyUnitTest(unittest.TestCase):
             'How far is it from the church to the station?'
         ],
         [
-            'In 1986 a sever nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
+            'In 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
             'disaster in history.' +
             ' It is belived that the disaster was cauded by human error and reactor\'s design flaws',
             'In 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
@@ -27,7 +27,7 @@ class MyUnitTest(unittest.TestCase):
             test_txt = pair[0]
             ref_txt = pair[1]
             output_txt = main.correct(test_txt)
-            self.assertEquals(output_txt, ref_txt)
+            self.assertEquals(output_txt, ref_txt, output_txt + ' != ' + ref_txt)
 
     def test_not_equals(self):
         text = 'Pontedera is near Pisa'  # il dizionario non riconosce la citta di Pontedera

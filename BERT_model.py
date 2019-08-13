@@ -7,9 +7,14 @@ logging.basicConfig(level=logging.INFO)
 
 NUMBER_OF_PREDICTIONS = 100
 
+# Load pre-trained model tokenizer (vocabulary)
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# Load pre-trained model (weights)
+model = BertForMaskedLM.from_pretrained('bert-base-uncased')
+model.eval()
+
+
 def predict(text, debug=True):
-    # Load pre-trained model tokenizer (vocabulary)
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     tokenized_text = tokenizer.tokenize(text)
     indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
@@ -21,10 +26,6 @@ def predict(text, debug=True):
     # Convert inputs to PyTorch tensors
     tokens_tensor = torch.tensor([indexed_tokens])
     segments_tensors = torch.tensor([segments_ids])
-
-    # Load pre-trained model (weights)
-    model = BertForMaskedLM.from_pretrained('bert-base-uncased')
-    model.eval()
 
     # Predict all tokens
     with torch.no_grad():
