@@ -9,7 +9,7 @@ myDict = json.load(open("myLargeDict.json", "r"))
 
 
 def tok_in_dict(tok):
-    return tok.lower() in tokenizer.vocab or tok.lower in myDict
+    return tok.lower() in tokenizer.vocab or tok.lower() in myDict
 
 
 def tokenize(text, debug=True):
