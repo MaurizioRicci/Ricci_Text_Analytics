@@ -9,7 +9,9 @@ myDict = json.load(open("myLargeDict.json", "r"))
 
 
 def tok_in_dict(tok):
-    return tok in tokenizer.vocab or tok in myDict
+    # controllo nel dizionario di BERT, poi in uno più grande, infine controllo che sia un numero
+    # BERT ha dei numeri nel suo dizionario ma solo interi
+    return tok in tokenizer.vocab or tok in myDict or tok.replace('.', '').isdigit()
 
 
 def tokenize(text, debug=True):

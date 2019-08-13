@@ -19,14 +19,22 @@ class MyUnitTest(unittest.TestCase):
             'in 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
             'disaster in history.' +
             ' it is believed that the disaster was caused by human error and reactor\'s design flaws'
-        ]
+        ],
+        [
+            'Swimning in ghe Caraibbean sea must be very relaxying.',
+            'Swimming in the Caribbean sea must be very relaxing.',
+        ],
+        [
+            'This hamburger costs 350$',
+            'This hamburger costs 350$'
+         ]
     ]
 
     def test_equals(self):
         for pair in self.pairs:
             test_txt = pair[0]
             ref_txt = pair[1].lower()
-            output_txt = main.correct(test_txt)
+            output_txt = main.correct(test_txt)  # il testo corretto e' uncased per via di BERT uncased in uso
             self.assertEqual(output_txt, ref_txt, output_txt + ' != ' + ref_txt)
 
     def test_not_equals(self):
@@ -36,4 +44,4 @@ class MyUnitTest(unittest.TestCase):
 
 if __name__ == '__main__':
     test = MyUnitTest()
-    test.test_equals()
+    test.main()
