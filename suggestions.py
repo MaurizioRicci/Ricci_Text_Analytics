@@ -1,19 +1,20 @@
 from similarity.levenshtein import Levenshtein
-from similarity.jarowinkler import JaroWinkler
+from similarity.optimal_string_alignment import OptimalStringAlignment
 
 levenshtein = Levenshtein()
-print(levenshtein.distance('My string', 'My tstring'))
+#print('Levenshtein:', levenshtein.distance('My goem', 'My home'))
+#print('Levenshtein:', levenshtein.distance('My goem', 'My go'))
 
-jarowinkler = JaroWinkler()
-print(jarowinkler.similarity('My string', 'My tsring'))
-print(jarowinkler.similarity('My string', 'My ntrisg'))
-
+#optimalStringAlignment = OptimalStringAlignment()
+#print('Optimal:', optimalStringAlignment.distance('My goem', 'My home'))
+#print('Optimal:', optimalStringAlignment.distance('My goem', 'My go'))
 
 def eval_distance(test, ref):
     return levenshtein.distance(test, ref)
 
 
 def evalSuggestions(testArr, ref, debug= True):
+    # valuta un array di candidati contro una parola di riferimento
     res = []
     for testW in testArr:
         res.append({
