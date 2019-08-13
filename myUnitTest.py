@@ -19,6 +19,10 @@ class MyUnitTest(unittest.TestCase):
             'In 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
             'disaster in history.' +
             ' It is believed that the disaster was caused by human error and reactor\'s design flaws'
+        ],
+        [
+            'If you visit the Carribean sea, then you will have a great oppurtunity to see some stars.',  # BERT non può predirre stingray
+            'If you visit the Caribbean sea, then you will have a great opportunity to see some stars.'
         ]
     ]
 
@@ -27,7 +31,7 @@ class MyUnitTest(unittest.TestCase):
             test_txt = pair[0]
             ref_txt = pair[1]
             output_txt = main.correct(test_txt)
-            self.assertEquals(output_txt, ref_txt, output_txt + ' != ' + ref_txt)
+            self.assertEqual(output_txt, ref_txt, output_txt + ' != ' + ref_txt)
 
     def test_not_equals(self):
         text = 'Pontedera is near Pisa'  # il dizionario non riconosce la citta di Pontedera

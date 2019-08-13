@@ -3,7 +3,7 @@ from pytorch_pretrained_bert import BertTokenizer
 import string
 import json
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=False)
 # 400K voci -> 4Mb. Ottenuto da https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json
 myDict = json.load(open("myLargeDict.json", "r"))
 
