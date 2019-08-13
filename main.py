@@ -6,12 +6,14 @@ debug = True
 
 
 def correct(text):
+    text = text.lower()
     max_iterations = 10
 
     for c in range(max_iterations):
         # creo l'input per BERT e ottengo la lista delle parole errate
         bert_input, unk_words = tokenizerForBERT.tokenize(text, debug=debug)
 
+        text = text.lower()
         if len(unk_words) > 0: # altrimenti nessun errore rilevato
             predictions = BERT_model.predict(bert_input, debug=debug)  # ottengo predizioni da BERT
             ordered_predictions = suggestions.evalSuggestions(predictions,  # confronto le predizioni con l'input errato
