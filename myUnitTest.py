@@ -31,6 +31,12 @@ class MyUnitTest(unittest.TestCase):
         [
             'Don\'t be latr.',
             'Don\'t be late.'
+        ],
+        [
+            'We were two student from the Columbus Univerisity. As mecanics ennginers we design engines, power plants' +
+            ' and other machines.',
+            'We were two student from the Columbus University. As mechanics engineers we design engines, power plants' +
+            ' and other machines.'
         ]
     ]
 

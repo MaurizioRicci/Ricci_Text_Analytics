@@ -31,7 +31,18 @@ def correct(text):
     return text
 
 
-text = 'I want to buy the car, becaeuse it is cheap. The car is also luxurius.'
-corrected = correct(text)
-print('Corrected text:', corrected)
+def test(testArr):
+    for txt in testArr:
+        corrected = correct(txt)
+        print('Corrected text:', corrected)
 
+
+if __name__ == '__main__':
+    testArr = [
+        'I want to buy the car, becaeuse it is cheap. The car is also luxurius.',
+        'I\'d like to go out for shuppping.',
+        'We were two student from the Columbus Univerisity. As mecanics ennginers we design engines, power plants ' +
+        'and other machines.'
+    ]
+
+    test(testArr)
