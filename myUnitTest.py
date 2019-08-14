@@ -14,19 +14,19 @@ class MyUnitTest(unittest.TestCase):
         ],
         [
             'in 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
-            'disaster in history.' +
-            ' it is belived that the disaster was cauded by human error and reactor\'s design flaws',
+            'disaster in historie.' +
+            ' it is belived that the disaster was cauded by human error and reacctor\'s design flas.',
             'in 1986 a severe nuclear disaster occurred in the city of Chernobyl. It is considered the worst nuclear '
             'disaster in history.' +
-            ' it is believed that the disaster was caused by human error and reactor\'s design flaws'
+            ' it is believed that the disaster was caused by human error and reactor\'s design flaws.'
         ],
         [
             'Swimning in ghe Caraibbean sea must be very relaxying.',
             'Swimming in the Caribbean sea must be very relaxing.',
         ],
         [
-            'This hamburger costs 350$',
-            'This hamburger costs 350$'
+            'This hamburger costs 350$.',
+            'This hamburger costs 350$.'
          ]
     ]
 
@@ -41,7 +41,10 @@ class MyUnitTest(unittest.TestCase):
         text = 'Pontedera is near Pisa'  # il dizionario non riconosce la citta di Pontedera
         self.assertNotEqual(main.correct(text), text.lower())
 
+        text2 = 'The new Huauei has a 20 Mpx camera desined by Leica'  # Huawei e Leica non predicibili da BERT
+        self.assertNotEqual(main.correct(text2), text2.lower())
+
 
 if __name__ == '__main__':
     test = MyUnitTest()
-    test.main()
+    test.main(fail_fast=True)
