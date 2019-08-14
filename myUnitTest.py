@@ -27,7 +27,11 @@ class MyUnitTest(unittest.TestCase):
         [
             'This hamburger costs 350$.',
             'This hamburger costs 350$.'
-         ]
+         ],
+        [
+            'Don\'t be latr.',
+            'Don\'t be late.'
+        ]
     ]
 
     def test_equals(self):

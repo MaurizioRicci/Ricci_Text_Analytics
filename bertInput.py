@@ -6,15 +6,16 @@ import json
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 # 400K voci -> 4Mb. Ottenuto da https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json
 myDict = json.load(open("myLargeDict.json", "r"))
-
+affixes = ['\'d', '\'s', 'n\'t']
 
 def tok_in_dict(tok):
     # controllo nel dizionario di BERT, poi in uno più grande, infine controllo che sia un numero
     # BERT ha dei numeri nel suo dizionario ma solo interi
-    return tok in tokenizer.vocab or tok in myDict or tok.replace('.', '').isdigit()
+    return (tok in string.punctuation) or (tok in affixes) or \
+           (tok in tokenizer.vocab) or (tok in myDict) or (tok.replace('.', '').isdigit())
 
 
-def tokenize(text, debug=True):
+def format_str(text, debug=True):
     #text = 'I want to buy the car becaeuse it is cheap.'
     tokenized_text = word_tokenize(text)
 
@@ -25,16 +26,15 @@ def tokenize(text, debug=True):
 
     for i in range(len(tokenized_text)):
         tok = tokenized_text[i].lower()
-        if not tok_in_dict(tok) and tok not in string.punctuation and \
-                tok != '\'s':
+        if not tok_in_dict(tok):
             unk_words.append(tok)
             tokenized_text[i] = '[MASK]'
 
     str = ' '.join(tokenized_text)
-    bert_text = '[CLS] %s [SEP]' %str
+    bert_text = '[CLS] %s [SEP]' % str
 
     if debug:
-        print('BERT text:', bert_text)
+        print('BERT input:', bert_text)
 
     if debug:
         print('Unk words:', unk_words)

@@ -1,4 +1,4 @@
-import tokenizerForBERT
+import bertInput
 import BERT_model
 import suggestions
 
@@ -10,7 +10,7 @@ def correct(text):
 
     for c in range(MAX_ITERATIONS):
         # creo l'input per BERT e ottengo la lista delle parole errate
-        bert_input, unk_words = tokenizerForBERT.tokenize(text, debug=debug)
+        bert_input, unk_words = bertInput.format_str(text, debug=debug)
 
         if len(unk_words) > 0: # altrimenti nessun errore rilevato
             predictions = BERT_model.predict(bert_input, debug=debug)  # ottengo predizioni da BERT
