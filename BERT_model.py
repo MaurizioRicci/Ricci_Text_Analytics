@@ -31,11 +31,11 @@ def predict(text, debug=True):
     with torch.no_grad():
         predictions = model(tokens_tensor, segments_tensors)
 
-    #predicted_index = torch.argmax(predictions[0, masked_index]).item()
-    #predicted_token = tokenizer.convert_ids_to_tokens([predicted_index])[0]
-    #print(predicted_token)
+    # predicted_index = torch.argmax(predictions[0, masked_index]).item()
+    # predicted_token = tokenizer.convert_ids_to_tokens([predicted_index])[0]
+    # print(predicted_token)
 
-    predicted_indexes = torch.topk(predictions[0, masked_index], NUMBER_OF_PREDICTIONS)[1]
+    predicted_indexes = torch.topk(predictions[0, masked_index], NUMBER_OF_PREDICTIONS).indices
     predicted_indexes_list = predicted_indexes.tolist()
     predicted_tokens = list(map(lambda idx: tokenizer.convert_ids_to_tokens([idx])[0], predicted_indexes_list))
 
