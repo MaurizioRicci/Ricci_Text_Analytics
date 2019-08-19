@@ -44,4 +44,23 @@ def predict(text, debug=True):
 
     return predicted_tokens
 
+
+# def computeProbOverSuggestions(predictions, masked_index):
+#     # computa la prob per ogni ids e risolve gli ids
+#     softamax_sorted = torch.softmax(predictions[0, masked_index], 0).sort(descending=True)
+#     softamax_sorted_values = softamax_sorted.values
+#
+#     prob_list = softamax_sorted_values.tolist()
+#     index_list = softamax_sorted.indices.tolist()
+#     res = []
+#     for c in range(len(index_list)):
+#         data = {'index':None, 'prob': None}
+#         data['index'] = index_list[c]
+#         data['prob'] = prob_list[c]
+#         res.append(data)
+#
+#     for c in range(len(res)):
+#         res[c]['tok'] = tokenizer.convert_ids_to_tokens([[res[c]['index']]][0])
+#     return res
+
 #predict('[CLS] I want to [MASK] the car because it is cheap . [SEP]')
