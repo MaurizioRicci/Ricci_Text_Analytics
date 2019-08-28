@@ -1,3 +1,5 @@
+import math
+
 import torch
 from pytorch_pretrained_bert import BertTokenizer, BertForMaskedLM
 
@@ -64,3 +66,15 @@ def predict(text, debug=True):
 #     return res
 
 #predict('[CLS] I want to [MASK] the car because it is cheap . [SEP]')
+
+
+def get_score(sentence):
+    if sentence.strip() == '':
+        raise Exception('Expected sentence, got empty string')
+    sentence = sentence.lower()
+    tokenize_input = tokenizer.tokenize(sentence)
+    tensor_input = torch.tensor([tokenizer.convert_tokens_to_ids(tokenize_input)])
+    predictions = model(tensor_input)
+    loss_fct = torch.nn.CrossEntropyLoss()
+    loss = loss_fct(predictions.squeeze(), tensor_input.squeeze()).data
+    return math.exp(loss)  # calcola perplexity
