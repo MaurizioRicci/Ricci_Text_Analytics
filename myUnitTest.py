@@ -57,4 +57,4 @@ class MyUnitTest(unittest.TestCase):
 
 if __name__ == '__main__':
     test = MyUnitTest()
-    test.main(fail_fast=True)
+    test.main(failfast=True)
