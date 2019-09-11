@@ -6,7 +6,7 @@ debug = True
 MAX_ITERATIONS = 10
 
 def correct(text):
-    text = text.lower()
+    # text = text.lower()
 
     for c in range(MAX_ITERATIONS):
         # creo l'input per BERT e ottengo la lista delle parole errate

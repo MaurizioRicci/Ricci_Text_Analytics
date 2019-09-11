@@ -43,7 +43,7 @@ class MyUnitTest(unittest.TestCase):
     def test_equals(self):
         for pair in self.pairs:
             test_txt = pair[0]
-            ref_txt = pair[1].lower()
+            ref_txt = pair[1]
             output_txt = main.correct(test_txt)  # il testo corretto e' uncased per via di BERT uncased in uso
             self.assertEqual(output_txt, ref_txt, output_txt + ' != ' + ref_txt)
 

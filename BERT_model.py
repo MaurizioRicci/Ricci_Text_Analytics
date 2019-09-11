@@ -10,9 +10,9 @@ logging.basicConfig(level=logging.INFO)
 NUMBER_OF_PREDICTIONS = 100
 
 # Load pre-trained model tokenizer (vocabulary)
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 # Load pre-trained model (weights)
-model = BertForMaskedLM.from_pretrained('bert-base-uncased')
+model = BertForMaskedLM.from_pretrained('bert-base-cased')
 model.eval()
 
 

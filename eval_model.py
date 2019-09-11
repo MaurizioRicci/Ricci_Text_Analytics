@@ -2,7 +2,7 @@ from nltk.corpus import treebank
 import BERT_model
 from pytorch_pretrained_bert import BertTokenizer
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 
 class _BertTxtContainer:  # memorizza la frase più lunga che BERT possa valutare
