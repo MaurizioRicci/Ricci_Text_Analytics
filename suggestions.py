@@ -1,4 +1,4 @@
-def eval_distance(s, t):
+def iterative_levenshtein(s, t):
     """
             iterative_levenshtein(s, t) -> ldist
             ldist is the Levenshtein distance between the strings
@@ -29,7 +29,7 @@ def eval_distance(s, t):
 def evalSuggestions(testArr, ref, debug=True):
     # valuta un array di candidati contro una parola di riferimento
     def word_ref_distance(it):
-        return dict(w=it, dist=eval_distance(it, ref))
+        return dict(w=it, dist=iterative_levenshtein(it, ref))
 
     res = map(word_ref_distance, testArr)
     res = sorted(res, key=lambda k: k['dist'], reverse=False)
