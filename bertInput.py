@@ -11,8 +11,8 @@ affixes = ['\'d', '\'s', 'n\'t']
 def tok_in_dict(tok):
     # controllo nel dizionario di BERT, poi in uno più grande, infine controllo che sia un numero
     # BERT ha dei numeri nel suo dizionario ma solo interi
-    return (tok in string.punctuation) or (tok in affixes) or \
-           (tok in tokenizer.vocab) or (tok.lower() in myDict) or (tok.replace('.', '').isdigit())
+    return (tok in affixes) or (tok in tokenizer.vocab) \
+           or (tok.lower() in myDict) or (tok.replace('.', '').isdigit())
 
 
 def format_str(text, debug=True):
